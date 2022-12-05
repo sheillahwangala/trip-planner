@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_05_175753) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_05_190011) do
   create_table "destinations", force: :cascade do |t|
     t.string "name"
     t.string "location"
@@ -25,6 +25,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_05_175753) do
     t.string "activity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "trip_id", null: false
+    t.integer "destination_id", null: false
+    t.index ["destination_id"], name: "index_stopovers_on_destination_id"
+    t.index ["trip_id"], name: "index_stopovers_on_trip_id"
   end
 
   create_table "trips", force: :cascade do |t|
@@ -35,4 +39,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_05_175753) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "stopovers", "destinations"
+  add_foreign_key "stopovers", "trips"
 end
