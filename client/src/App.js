@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Template from './components/template/Template';
+import Trips from './components/trips/trips';
 
 function App() {
   return (
@@ -8,7 +9,7 @@ function App() {
       <BrowserRouter>
         <Template>
           <Routes>
-            <Route path="/" />
+            <Route path="/" index element={<Trips/>} />
           </Routes>
         </Template>
       </BrowserRouter>
