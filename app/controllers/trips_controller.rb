@@ -1,31 +1,20 @@
 class TripsController < ApplicationController
-    before_action :authorize
+    rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
     def index
-        user = User.find_by(id: session[:user_id])
         trips = Trip.all
-        render json: trips, status: :created
+        render json: trips
     end
 
-    def create
-        @user = User.find_by(id: session[user_id])
-        trip = Trip.create(trip_params.merge({user_id: @user.id}))
-        if trip.valid?
-            render json: trip, status: :created
-        else
-            render json: { errors: trip.errors.full_messages }, status: :unprocessable_entity
-        end
+    def show
+        trip = Trip.find(params[:id])
+        render json: trip
     end
 
     private
 
-    def authorize
-        return render json: { errors: ["Not authorized"] }, status: :unauthorized unless session.include? :user_id
+    def render_not_found_response
+        render json: { error: "Trip not found" }, status: :not_found
     end
 
-    def trip_params
-        params.permit(:title, :start_date, :end_date)
-    end
-
-    
 end

@@ -10,13 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_05_190011) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_06_090316) do
   create_table "destinations", force: :cascade do |t|
     t.string "name"
     t.string "location"
     t.string "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "trip_id", null: false
+    t.index ["trip_id"], name: "index_destinations_on_trip_id"
   end
 
   create_table "stopovers", force: :cascade do |t|
@@ -37,8 +39,20 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_05_190011) do
     t.string "end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["user_id"], name: "index_trips_on_user_id"
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "password_digest"
+    t.string "about"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "destinations", "trips"
   add_foreign_key "stopovers", "destinations"
   add_foreign_key "stopovers", "trips"
+  add_foreign_key "trips", "users"
 end
