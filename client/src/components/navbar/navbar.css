@@ -10,7 +10,7 @@ body{
 .nav-link .fa{
     transition:all 1s;
     padding: 50px;
-    margin-left: 3000px;
+    margin-left: 50px;
 }
 
 .nav-link:hover .fa{
@@ -19,8 +19,4 @@ body{
 
 .w-250{
     width: 350px;
-}
-.navbar-nav {
-    margin-left: 400px;
-    padding: 10px;
 }
