@@ -3,6 +3,6 @@ class User < ApplicationRecord
 
     validates :username, presence: true, uniqueness: true
 
-    has_many :trips
+    # has_many :trips
 
 end
