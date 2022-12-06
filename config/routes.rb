@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :users
   resources :stopovers, only: [:show, :create]
   resources :destinations, only: [:index, :show]
   resources :trips, only: [:index, :show]
