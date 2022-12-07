@@ -12,10 +12,10 @@ function NavBar() {
             <div className="collapse navbar-collapse" id="navbarNav">
                 <ul className="navbar-nav ms-auto">
                     <li className="nav-item active">
-                        <NavLink to='/' className="nav-link"><h3>Trips</h3> <span className="sr-only"></span></NavLink>
+                        <NavLink to='/' className="nav-link"><h3>Home</h3> <span className="sr-only"></span></NavLink>
                     </li>
                     <li className="nav-item">
-                        <NavLink to='/books' className="nav-link" ><h3>Add Trip</h3></NavLink>
+                        <NavLink to='/trips' className="nav-link" ><h3>My Trips</h3></NavLink>
                     </li>
                     <li className="nav-item">
                         <NavLink to='/signin' className="nav-link"><h3>Sign In</h3></NavLink>
